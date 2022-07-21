@@ -1,2 +1,3 @@
 torch
 numpy
+click==8.0.4
