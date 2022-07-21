@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-    Easy to use class balanced cross entropy and focal loss implementation for Pytorch.
+    Easy-to-use, class-balanced, cross-entropy and focal loss implementation for Pytorch.
 </p>
 
 ## Theory
