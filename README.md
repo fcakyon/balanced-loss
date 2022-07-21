@@ -6,14 +6,14 @@
 
 <div align="center">
     <a href="https://badge.fury.io/py/balanced-loss"><img src="https://badge.fury.io/py/balanced-loss.svg" alt="pypi version"></a>
-
-    Easy to use class balanced cross entropy and focal loss implementation for Pytorch.
 </div>
 
-
+<p align="center">
+    Easy to use class balanced cross entropy and focal loss implementation for Pytorch.
+</p>
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/34196005/180311379-1003da44-cdf9-46e8-af83-e65fbc3710cd.png" width="600">
+<img src="https://user-images.githubusercontent.com/34196005/180311379-1003da44-cdf9-46e8-af83-e65fbc3710cd.png" width="400">
 </p>
 
 ## Theory
