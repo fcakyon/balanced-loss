@@ -1,4 +1,4 @@
-name: package testing
+name: Package Testing
 
 on:
   schedule:

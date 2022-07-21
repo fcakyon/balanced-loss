@@ -1,4 +1,4 @@
-name: CI (PyTorch 1.10.2)
+name: Continious Integration
 
 on:
   push:
