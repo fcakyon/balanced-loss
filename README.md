@@ -4,7 +4,17 @@
 </h2>
 </div>
 
-Easy to use class balanced cross entropy and focal loss implementation for Pytorch
+<div align="center">
+    <a href="https://badge.fury.io/py/balanced-loss"><img src="https://badge.fury.io/py/balanced-loss.svg" alt="pypi version"></a>
+
+    Easy to use class balanced cross entropy and focal loss implementation for Pytorch.
+</div>
+
+
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/34196005/180311379-1003da44-cdf9-46e8-af83-e65fbc3710cd.png" width="600">
+</p>
 
 ## Theory
 
@@ -117,7 +127,7 @@ loss = focal_loss(logits, labels)
 What is the difference between this repo and vandit15's?
 
 - This repo is a pypi installable package
-- This repo implements loss functions as torch.nn.Module 
+- This repo implements loss functions as `torch.nn.Module`
 - In addition to class balanced losses, this repo also supports the standard versions of the cross entropy/focal loss etc. over the same API
 - All typos and errors in vandit15's source are fixed
 
