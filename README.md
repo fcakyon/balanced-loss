@@ -1,10 +1,12 @@
-<div align="center">
-    <a href="https://badge.fury.io/py/balanced-loss"><img src="https://badge.fury.io/py/balanced-loss.svg" alt="pypi version"></a>
-</div>
-
 <p align="center">
 <img src="https://user-images.githubusercontent.com/34196005/180311379-1003da44-cdf9-46e8-af83-e65fbc3710cd.png" width="350">
 </p>
+
+<div align="center">
+    <a href="https://badge.fury.io/py/balanced-loss"><img src="https://badge.fury.io/py/balanced-loss.svg" alt="pypi version"></a>
+    <a href="https://pepy.tech/project/balanced-loss"><img src="https://pepy.tech/badge/balanced-loss" alt="total downloads"></a>
+    <a href="https://twitter.com/fcakyon"><img src="https://img.shields.io/twitter/follow/fcakyon?color=blue&logo=twitter&style=flat" alt="fcakyon twitter"></a>
+</div>
 
 <p align="center">
     Easy-to-use, class-balanced, cross-entropy and focal loss implementation for Pytorch.
