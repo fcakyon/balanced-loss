@@ -5,7 +5,7 @@
 <div align="center">
     <a href="https://badge.fury.io/py/balanced-loss"><img src="https://badge.fury.io/py/balanced-loss.svg" alt="pypi version"></a>
     <a href="https://pepy.tech/project/balanced-loss"><img src="https://pepy.tech/badge/balanced-loss" alt="total downloads"></a>
-    <a href="https://twitter.com/fcakyon"><img src="https://img.shields.io/twitter/follow/fcakyon?color=blue&logo=twitter&style=flat" alt="fcakyon twitter"></a>
+    <a href="https://twitter.com/fcakyon"><img src="https://img.shields.io/badge/twitter-fcakyon_-blue?logo=twitter&style=flat" alt="fcakyon twitter"></a>
 </div>
 
 <p align="center">
