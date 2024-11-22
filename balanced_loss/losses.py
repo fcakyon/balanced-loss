@@ -97,6 +97,8 @@ class Loss(torch.nn.Module):
 
         if self.class_balanced:
             effective_num = 1.0 - np.power(self.beta, self.samples_per_class)
+            # Avoid division by 0 error for test cases without all labels present.
+            effective_num[effective_num == 0] = 1
             weights = (1.0 - self.beta) / np.array(effective_num)
             weights = weights / np.sum(weights) * num_classes
             weights = torch.tensor(weights, device=logits.device).float()
