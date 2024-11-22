@@ -44,6 +44,7 @@ class Loss(torch.nn.Module):
         fl_gamma=2,
         samples_per_class=None,
         class_balanced=False,
+        safe: bool = False
     ):
         """
         Compute the Class Balanced Loss between `logits` and the ground truth `labels`.
@@ -60,6 +61,7 @@ class Loss(torch.nn.Module):
             samples_per_class: A python list of size [num_classes].
                 Required if class_balance is True.
             class_balanced: bool. Whether to use class balanced loss.
+            safe: bool. Whether to allow labels with no samples.
         Returns:
             Loss instance
         """
@@ -73,11 +75,12 @@ class Loss(torch.nn.Module):
         self.fl_gamma = fl_gamma
         self.samples_per_class = samples_per_class
         self.class_balanced = class_balanced
+        self.safe = safe
 
     def forward(
         self,
         logits: torch.tensor,
-        labels: torch.tensor,
+        labels: torch.tensor
     ):
         """
         Compute the Class Balanced Loss between `logits` and the ground truth `labels`.
@@ -98,9 +101,15 @@ class Loss(torch.nn.Module):
         if self.class_balanced:
             effective_num = 1.0 - np.power(self.beta, self.samples_per_class)
             # Avoid division by 0 error for test cases without all labels present.
-            effective_num[effective_num == 0] = 1
+            if self.safe:
+                effective_num_classes = np.sum(effective_num != 0)
+                effective_num[effective_num == 0] = np.inf
+
+            else:
+                effective_num_classes = num_classes
+
             weights = (1.0 - self.beta) / np.array(effective_num)
-            weights = weights / np.sum(weights) * num_classes
+            weights = weights / np.sum(weights) * effective_num_classes
             weights = torch.tensor(weights, device=logits.device).float()
 
             if self.loss_type != "cross_entropy":
