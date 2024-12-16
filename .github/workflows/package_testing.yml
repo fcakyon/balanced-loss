@@ -10,7 +10,7 @@ jobs:
 
     strategy:
       matrix:
-        operating-system: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-latest, windows-latest, macos-latest]
         python-version: [3.9, "3.10"]
         torch-version: [1.13.1, 2.5.1]
       fail-fast: false
@@ -26,7 +26,7 @@ jobs:
 
       - name: Restore Ubuntu cache
         uses: actions/cache@v4
-        if: matrix.operating-system == 'ubuntu-latest'
+        if: matrix.os == 'ubuntu-latest'
         with:
           path: ~/.cache/pip
           key: ${{ matrix.os }}-${{ matrix.python-version }}-${{ hashFiles('**/setup.py')}}
@@ -34,7 +34,7 @@ jobs:
 
       - name: Restore MacOS cache
         uses: actions/cache@v4
-        if: matrix.operating-system == 'macos-latest'
+        if: matrix.os == 'macos-latest'
         with:
           path: ~/Library/Caches/pip
           key: ${{ matrix.os }}-${{ matrix.python-version }}-${{ hashFiles('**/setup.py')}}
@@ -42,7 +42,7 @@ jobs:
 
       - name: Restore Windows cache
         uses: actions/cache@v4
-        if: matrix.operating-system == 'windows-latest'
+        if: matrix.os == 'windows-latest'
         with:
           path: ~\AppData\Local\pip\Cache
           key: ${{ matrix.os }}-${{ matrix.python-version }}-${{ hashFiles('**/setup.py')}}
@@ -55,16 +55,26 @@ jobs:
         run: >
           pip install numpy
 
-      - name: Install PyTorch on Linux and Windows
+      - name: Install PyTorch==1.13.1 on Linux and Windows
         if: >
-          matrix.operating-system == 'ubuntu-latest' ||
-          matrix.operating-system == 'windows-latest'
+          (matrix.os == 'ubuntu-latest' ||
+          matrix.os == 'windows-latest') &&
+          matrix.torch-version == '1.13.1'
         run: >
           pip install torch==${{ matrix.torch-version }}+cpu
           -f https://download.pytorch.org/whl/torch_stable.html
 
+      - name: Install PyTorch==2.5.1 on Linux and Windows
+        if: >
+          (matrix.os == 'ubuntu-latest' ||
+          matrix.os == 'windows-latest') &&
+          matrix.torch-version == '2.5.1'
+        run: >
+          pip install torch==${{ matrix.torch-version }}
+          -f https://download.pytorch.org/whl/torch_stable.html
+
       - name: Install PyTorch on MacOS
-        if: matrix.operating-system == 'macos-latest'
+        if: matrix.os == 'macos-latest' 
         run: pip install torch==${{ matrix.torch-version }}
 
       - name: Install latest balanced-loss package
@@ -74,4 +84,3 @@ jobs:
       - name: Unittest balanced-loss
         run: |
           python -m unittest
-
