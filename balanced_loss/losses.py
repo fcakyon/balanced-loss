@@ -44,7 +44,7 @@ class Loss(torch.nn.Module):
         fl_gamma=2,
         samples_per_class=None,
         class_balanced=False,
-        safe: bool = False
+        safe: bool = False,
     ):
         """
         Compute the Class Balanced Loss between `logits` and the ground truth `labels`.
@@ -77,11 +77,7 @@ class Loss(torch.nn.Module):
         self.class_balanced = class_balanced
         self.safe = safe
 
-    def forward(
-        self,
-        logits: torch.tensor,
-        labels: torch.tensor
-    ):
+    def forward(self, logits: torch.tensor, labels: torch.tensor):
         """
         Compute the Class Balanced Loss between `logits` and the ground truth `labels`.
         Class Balanced Loss: ((1-beta)/(1-beta^n))*Loss(labels, logits)
