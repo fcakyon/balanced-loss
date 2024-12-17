@@ -133,7 +133,8 @@ What is the difference between this repo and vandit15's?
 - This repo implements loss functions as `torch.nn.Module`
 - In addition to class balanced losses, this repo also supports the standard versions of the cross entropy/focal loss etc. over the same API
 - All typos and errors in vandit15's source are fixed
-- Continiously tested on PyTorch 1.13.1 and 2.5.1
+- Continuously tested on PyTorch 1.13.1 and 2.5.1
+- Automatically selects loss module device based on logits
 
 ## References
 
